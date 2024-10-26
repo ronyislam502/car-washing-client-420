@@ -1,6 +1,14 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
+type TSignUp = {
+  name: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  address: string;
+};
+
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
 

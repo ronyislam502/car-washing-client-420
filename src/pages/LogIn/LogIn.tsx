@@ -1,6 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useLogInMutation } from "../../redux/features/auth/authApi";
 import { Link } from "react-router-dom";
+import { verifyToken } from "../../utils/verifyToken";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUser, TUser } from "../../redux/features/auth/authSlice";
+import { toast } from "sonner";
 
 type TData = {
   email: string;
@@ -10,14 +14,26 @@ type TData = {
 const LogIn = () => {
   const { register, handleSubmit } = useForm();
   const [logIn] = useLogInMutation();
+  const dispatch = useAppDispatch();
 
   const onSubmit = async (data: TData) => {
-    const userInfo = {
-      email: data.email,
-      password: data.password,
-    };
-    const res = await logIn(userInfo).unwrap();
-    console.log(res);
+    const toastId = toast.loading("Logging in");
+    try {
+      const userInfo = {
+        email: data.email,
+        password: data.password,
+      };
+      const res = await logIn(userInfo).unwrap();
+      //   console.log(res);
+
+      const user = verifyToken(res.token) as TUser;
+      //   console.log(user);
+
+      dispatch(setUser({ user: user, token: res.token }));
+      toast.success("login in success", { id: toastId, duration: 2000 });
+    } catch (error) {
+      toast.error("something wrong");
+    }
   };
 
   return (
