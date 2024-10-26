@@ -1,26 +1,51 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSignUpMutation } from "../../redux/features/auth/authApi";
+import { toast } from "sonner";
 
 type TSignUp = {
   name: string;
   email: string;
   password: string;
-  phoneNumber: string;
+  phone: string;
   address: string;
 };
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
+  const [signUp] = useSignUpMutation(undefined);
+  const navigate = useNavigate();
 
-  const onSubmit = async (data) => {
-    console.log(data);
+  const onSubmit = async (data: TSignUp) => {
+    const toastId = toast.loading("sign up");
+    try {
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        address: data.address,
+        password: data.password,
+      };
+      const res = await signUp(userInfo).unwrap();
+      console.log(res);
+
+      toast.success("signUp success", { id: toastId, duration: 2000 });
+      if (await res.success) {
+        navigate("/login");
+        toast.info("Please, Log in", {
+          id: toastId,
+        });
+      }
+    } catch (error) {
+      toast.error("something wrong");
+    }
   };
 
   return (
     <div className="hero min-h-screen">
       <div className="hero-content w-2/4">
         <div className="card bg-base-100 w-2/4 shadow-2xl">
-          <form className="card-body">
+          <form onSubmit={handleSubmit(onSubmit)} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>

@@ -6,7 +6,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { setUser, TUser } from "../../redux/features/auth/authSlice";
 import { toast } from "sonner";
 
-type TData = {
+type TLogin = {
   email: string;
   password: string;
 };
@@ -16,7 +16,7 @@ const LogIn = () => {
   const [logIn] = useLogInMutation();
   const dispatch = useAppDispatch();
 
-  const onSubmit = async (data: TData) => {
+  const onSubmit = async (data: TLogin) => {
     const toastId = toast.loading("Logging in");
     try {
       const userInfo = {
