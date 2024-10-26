@@ -38,4 +38,8 @@ export const MenuLinks = [
     path: "/reviews",
     name: "Reviews",
   },
+  {
+    path: "/logIn",
+    name: "LogIn",
+  },
 ];
