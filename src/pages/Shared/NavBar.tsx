@@ -5,7 +5,7 @@ import {
   DrawerClose,
   DrawerContent,
   DrawerTrigger,
-} from "../ui/Drawer";
+} from "../../components/ui/Drawer";
 import { IoMenu } from "react-icons/io5";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 
