@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSignUpMutation } from "../../redux/features/auth/authApi";
 import { toast } from "sonner";
 
-type TSignUp = {
+type TFieldValues = {
   name: string;
   email: string;
   password: string;
@@ -16,7 +16,7 @@ const SignUp = () => {
   const [signUp] = useSignUpMutation(undefined);
   const navigate = useNavigate();
 
-  const onSubmit = async (data: TSignUp) => {
+  const onSubmit = async (data: TFieldValues) => {
     const toastId = toast.loading("sign up");
     try {
       const userInfo = {

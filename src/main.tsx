@@ -12,7 +12,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <RouterProvider router={routes} />
+        <div className="max-w-7xl mx-auto">
+          <RouterProvider router={routes} />
+        </div>
       </PersistGate>
     </Provider>
     <Toaster />
