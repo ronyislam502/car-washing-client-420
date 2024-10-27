@@ -1,3 +1,4 @@
+import ServiceManagement from "../pages/Dashboard/Admin/ServiceManagement/ServiceManagement";
 import Home from "../pages/Home/Home";
 import LogIn from "../pages/LogIn/LogIn";
 import Reviews from "../pages/Reviews/Reviews";
@@ -16,6 +17,10 @@ export const pageRoutes = [
       {
         path: "reviews",
         element: <Reviews />,
+      },
+      {
+        path: "serviceManagement",
+        element: <ServiceManagement />,
       },
       {
         path: "logIn",

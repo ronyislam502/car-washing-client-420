@@ -1,9 +1,7 @@
 const ServiceManagement = () => {
   return (
     <div>
-      <h2 className="text-xl font-bold text-center">
-        This is service management pages
-      </h2>
+      <h2>This is service management page</h2>
     </div>
   );
 };
