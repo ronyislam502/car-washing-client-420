@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface TErrorMessage {
   path: string;
   message: string;
@@ -6,6 +7,7 @@ export interface TErrorMessage {
 export interface TErrorResponse {
   status: number;
   data: {
+    errorMessages: any;
     success: boolean;
     message: string;
     errorSources: TErrorMessage[];
@@ -23,6 +25,11 @@ export interface TSlot {
   createdAt: string;
   updatedAt: string;
 }
+
+export const userRole = {
+  ADMIN: "admin",
+  USER: "user",
+};
 
 export type TSlotWithService = {
   _id: string;

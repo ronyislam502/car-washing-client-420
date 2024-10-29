@@ -8,8 +8,8 @@ import {
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
-import { toast } from "sonner";
 import { logout, setUser } from "../features/auth/authSlice";
+import { toast } from "sonner";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: "http://localhost:7000/api",
@@ -33,10 +33,10 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   let result = await baseQuery(AbortSignal, ApiProvider, extraOptions);
 
   if (result?.error?.status === 404) {
-    toast.error(result.error.data.message);
+    toast.error((result.error.data as { message: string }).message);
   }
   if (result?.error?.status === 403) {
-    toast.error(result.error.data.message);
+    toast.error((result.error.data as { message: string }).message);
   }
 
   if (result?.error?.status === 401) {
@@ -48,7 +48,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
     });
     const data = await res.json();
 
-    if (data.data.token) {
+    if (data?.data?.token) {
       const user = (ApiProvider.getState() as RootState).auth.user;
 
       ApiProvider.dispatch(
@@ -68,6 +68,6 @@ const baseQueryWithRefreshToken: BaseQueryFn<
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
-  tagTypes: ["service"],
+  tagTypes: ["service", "slot", "booking", "review", "user"],
   endpoints: () => ({}),
 });

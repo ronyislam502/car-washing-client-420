@@ -8,7 +8,7 @@ import { formatDateToDDMMYYYY } from "../../utils/utils";
 
 const Reviews = () => {
   const { data } = useGetAllReviewsQuery(undefined);
-  console.log("review", data);
+  //   console.log("review", data);
 
   return (
     <div className="container lg:py-[50px]">

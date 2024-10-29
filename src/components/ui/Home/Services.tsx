@@ -56,7 +56,7 @@ const Services = () => {
         heading="Our Top Services"
         subHeading="Explore our most popular services, carefully selected to give your car the best care it deserves"
       />
-      <div className="grid lg:grid-cols-3 grid-cols-1 gap-10">
+      <div className="grid grid-cols-1 px-16 lg:grid-cols-3 gap-10">
         {featuredServices.map((item, index) => {
           return (
             <div key={index}>

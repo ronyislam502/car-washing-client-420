@@ -9,15 +9,15 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="mx-auto lg:px-[70px] lg:py-10 py-5 px-5 bg-primary-foreground/10 mt-[70px] text-slate-950 flex lg:flex-row flex-col justify-between gap-x-10 gap-y-5">
+    <div className="mx-auto bg-slate-200 lg:px-[70px] lg:py-10 py-5 px-5 bg-primary-foreground/10 mt-[70px] text-slate-950 flex lg:flex-row flex-col justify-between gap-x-10 gap-y-5">
       <div className="lg:w-[33.33%]">
         <p className="text-4xl font-bold">
-          <span className="text-primary">Car</span>{" "}
-          <span className="text-primary-foreground">Wash</span>
+          <span className="text-green-500">Car</span>{" "}
+          <span className="text-red-500">Wash</span>
         </p>
         <p className="mt-5">
-          Effortless car care with premium cleaning services, easy booking, and
-          convenient comparison for a spotless ride.
+          "Effortless Car Care: Premium Cleaning, Easy Booking, and Convenient
+          Service Comparison."
         </p>
       </div>
       <div className="lg:w-[33.33%] flex flex-col items-center">

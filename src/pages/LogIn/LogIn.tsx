@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useLogInMutation } from "../../redux/features/auth/authApi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { verifyToken } from "../../utils/verifyToken";
 import { useAppDispatch } from "../../redux/hooks";
 import { setUser, TUser } from "../../redux/features/auth/authSlice";
@@ -12,7 +12,8 @@ type TLogin = {
 };
 
 const LogIn = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<TLogin>();
+  const navigate = useNavigate();
   const [logIn] = useLogInMutation();
   const dispatch = useAppDispatch();
 
@@ -24,13 +25,10 @@ const LogIn = () => {
         password: data.password,
       };
       const res = await logIn(userInfo).unwrap();
-      //   console.log(res);
-
       const user = verifyToken(res.token) as TUser;
-      //   console.log(user);
-
       dispatch(setUser({ user: user, token: res.token }));
       toast.success("login in success", { id: toastId, duration: 2000 });
+      navigate("/");
     } catch (error) {
       toast.error("something wrong");
     }

@@ -1,8 +1,8 @@
-import ServiceManagement from "../pages/Dashboard/Admin/ServiceManagement/ServiceManagement";
 import Home from "../pages/Home/Home";
 import LogIn from "../pages/LogIn/LogIn";
 import Reviews from "../pages/Reviews/Reviews";
-import Service from "../pages/Service/Service";
+import ServiceCompare from "../pages/Service/ServiceCompare";
+import Services from "../pages/Service/Services";
 import SignUp from "../pages/SignUp/SignUp";
 
 export const pageRoutes = [
@@ -12,15 +12,15 @@ export const pageRoutes = [
     children: [
       {
         path: "services",
-        element: <Service />,
+        element: <Services />,
+      },
+      {
+        path: "servicesCompare",
+        element: <ServiceCompare />,
       },
       {
         path: "reviews",
         element: <Reviews />,
-      },
-      {
-        path: "serviceManagement",
-        element: <ServiceManagement />,
       },
       {
         path: "logIn",

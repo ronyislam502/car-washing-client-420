@@ -12,7 +12,7 @@ type TFieldValues = {
 };
 
 const SignUp = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<TFieldValues>();
   const [signUp] = useSignUpMutation(undefined);
   const navigate = useNavigate();
 

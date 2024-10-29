@@ -8,6 +8,7 @@ const reviewApi = baseApi.injectEndpoints({
         method: "POST",
         body: reviewInfo,
       }),
+      invalidatesTags: ["review"],
     }),
     getAllReviews: builder.query({
       query: (reviewInfo) => ({
@@ -15,11 +16,13 @@ const reviewApi = baseApi.injectEndpoints({
         method: "GET",
         body: reviewInfo,
       }),
+      providesTags: ["review"],
     }),
     latestReview: builder.query({
       query: () => ({
         url: `/reviews?number=2`,
       }),
+      providesTags: ["review"],
     }),
   }),
 });

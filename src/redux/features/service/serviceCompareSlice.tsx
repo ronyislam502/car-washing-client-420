@@ -3,9 +3,9 @@ import { RootState } from "../../store";
 
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface TServiceComparisonStates {
+export type TServiceComparisonStates = {
   selectedServices: TService[];
-}
+};
 
 const initialState: TServiceComparisonStates = {
   selectedServices: [],

@@ -51,7 +51,7 @@ const Review = () => {
         rating: values?.rating,
         feedback: values?.feedback,
       }).unwrap();
-      console.log("res", response);
+      // console.log("res", response);
       toast.success(response.message, { id: toastId, duration: 2000 });
     } catch (error) {
       console.log("error", error);
@@ -64,7 +64,7 @@ const Review = () => {
   };
 
   return (
-    <div className="container mt-14">
+    <div className="container mt-14 px-4">
       <SectionTitle
         heading="What Our Customers Are Saying"
         subHeading="Discover why our clients love what we do"
@@ -73,7 +73,7 @@ const Review = () => {
         <div className="flex flex-col justify-center items-center">
           <h2 className="mb-5 text-lg font-medium">You need to login first</h2>
           <Link
-            to={"/sign-in"}
+            to={"/logIn"}
             className="bg-primary py-2 px-6 rounded-md font-semibold text-white"
           >
             Login

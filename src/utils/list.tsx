@@ -31,16 +31,11 @@ export const MenuLinks = [
     name: "Services",
   },
   {
-    path: "/services-compare",
+    path: "/servicesCompare",
     name: "Compare",
   },
   {
     path: "/reviews",
     name: "Reviews",
-  },
-
-  {
-    path: "/logIn",
-    name: "LogIn",
   },
 ];

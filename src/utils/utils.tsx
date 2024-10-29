@@ -28,8 +28,14 @@ export const filterUpcomingBookings = (
 ): TBooking | null => {
   const now = new Date();
 
-  const upcomingBookings = bookings
+  const bookingList = Array.isArray(bookings) ? bookings : [];
+
+  const upcomingBookings = bookingList
     .filter((booking) => {
+      if (!booking.slot?.date || !booking.slot?.startTime) {
+        console.warn("Warning: Missing date or startTime in booking:", booking);
+        return false;
+      }
       // Combine date and time into a single string
       const [year, month, day] = booking.slot.date.split("T")[0].split("-");
       const [hours, minutes] = booking.slot.startTime.split(":");
